@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Shopping</title>
+</head>
+<body>
+
+	 <!-- fakestore api -->
+	<h1>My Shopping</h1>
+
+	
+</body>
+
+<script>
+
+	// fetch method in javascript mean to used for calling api.
+
+	// then method in jaavascript is means to descript api data.
+
+	
+	// // javascript api call with fetch method
+	// fetch("https://fakestoreapi.com/products")
+	// 	.then((response) => response.json())
+	// 	.then((result) => {
+	// 		let data; 
+	// 		data=result;
+	// 		console.log(data);
+	// 	});
+
+		// async await fetch
+
+		let callApi = async () => {
+			let response = await fetch("https://fakestoreapi.com/products",{
+				method: "GET",
+				headers :{
+					"Content-Type":"application/json",
+				},
+			});
+
+			// change to json format
+			let jsonResponse = await response.json();
+			console.log(jsonResponse);
+		};
+
+		callApi();
+            
+</script>
+</html>

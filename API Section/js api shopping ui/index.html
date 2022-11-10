@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD0aEDt1XnDEccDEiRsou76gRdYzvubGugCVWRnCNEI4KuExwIdjT3t_TAsDBHTo4rfO4&usqp=CAU">
+	<title>Online Shopping</title>
+
+	<style>
+		body{
+			margin:0;
+			padding:0;
+
+		}
+
+
+		.container{
+			display: flex;
+			justify-content: center;
+			height:285vh;
+			margin:30px;
+
+
+		}
+
+		.table{
+			width:80%;
+			text-align:left;
+			border-collapse: collapse;
+			border:1px solid #04aa6d30;
+		}
+
+		.table thead{
+			background-color:#9b1729;
+			color:white;
+			text-align: center;
+
+		}
+		.table tbody{
+			border:0.5px solid silver;
+		}
+		.table tr,
+		.table td, 
+		.table th{
+			padding:10px 15px;
+			
+
+
+		}
+
+
+		.table tbody tr:nth-child(old){
+			background-color:#eeeeee40;
+		}
+
+		.table tbody tr:hover{
+			background-color:#eeeeee90;
+		}
+
+		.api_image{
+			width:70px;
+		}
+
+
+		.card{
+			display:flex;
+			justify-content: center;
+			margin-top:50px;
+			margin-left:150px;
+		}
+		.card-body{
+			width:86%;			
+			box-shadow:1px 1px 10px #4a4a4a30;
+			display:flex;
+		}
+
+		.card-body img{
+			width:200px;
+		}
+
+		.info{
+			padding-left:50px;
+
+	</style>
+</head>
+<body>
+	<div class="card" id="card">
+		
+	</div>
+			<div class="container">
+				<table class="table">
+				<thead>
+					<tr>
+						<th id="myId">ID</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Rating</th>
+						<th>Image</th>
+					</tr>
+				</thead>
+				<tbody id="page">			
+					
+				</tbody>
+			</table>
+			</div>
+	
+</body>
+
+<script>
+
+	let card=document.getElementById("card");
+	let page=document.getElementById("page");
+	// list ကို "" နဲ့ ညီထားရခြင်းမှာ undefined ကို မပေါ်စေရန် ဖြစ်သည်။
+	//ဒါကြောင့် ထားကို ထားပေးရမည်။
+	let list = "";
+
+	//hide detail box
+	card.style.display="none";
+	// javascript api call with fetch method
+	fetch("https://fakestoreapi.com/products")
+		.then((response) => response.json())
+		.then((result) => {
+
+			let data; 
+			data=result;
+			// console.log(data);
+
+			for(let i=0; i<data.length; i++){
+				//list ကို += ထားရခြင်းမှာ တစ်ခါအသစ်ထည့်တိုင်း တစ်ခု ထက်တိုးမည်လို့ ဆိုလိုခြင်း ဖြစ်သည်။
+				list+=`<tr onclick="detail(${data[i].id})">
+					<td>${data[i].id}</td>
+						<td>${data[i].title}</td>
+						<td>${data[i].price} $</td>
+						<td>${data[i].rating.rate}</td>
+					<td>
+					<a href="${data[i].image}" target="_blink"><img src="${data[i].image}" class="api_image"></a>
+					</td>
+			</tr>`;
+			}
+
+			//page ထဲကိုlist ကိုထည်ံလိုက်သည်။
+
+			page.innerHTML=list;
+			
+		});
+		function detail(id){
+			fetch("https://fakestoreapi.com/products/"+ id).then((response)=>response.json())
+			.then((data)=>{
+				// insert data
+					card.innerHTML=`<div class="card-body">
+				<img src="${data.image}">
+					<div class="info">
+						<h3>Product Information</h3>
+						<h4>ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${data.id}</h4>
+						<h4>Name:&nbsp;&nbsp;&nbsp;&nbsp;${data.title}</h4>						
+						<h4>Price:&nbsp;&nbsp;&nbsp;&nbsp;${data.price}$</h4>
+						<h4>Rating:&nbsp;&nbsp;&nbsp;&nbsp;${data.rating.rate}</h4>
+						
+					</div>
+		</div>`;
+		// reshow the box 
+		card.style.display="block";
+			});
+		}
+
+
+
+
+
+
+
+		// document.getElementById("myId").addEventListener('click',function alertMessage(){
+		// 	alert("I am web Developer");
+		// });
+
+
+
+		// function alertMessage(){
+		// 	alert("I am web Developer");
+		// }
+</script>
+</html>

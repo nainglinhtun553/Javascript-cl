@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<style>
+		/**{
+			background-color:#539296;
+			height:100vh;
+		}*/
+		.all{
+			width:350px;
+			height:400px;
+			background-color:white;
+			border-radius:5px;
+			margin:0 auto;
+			margin-top:50px;
+		}
+		body{
+			background-color: #539296;
+		}
+
+		.title{
+			text-align: center;
+			padding:20px;
+			color:#539296;
+			font-size:25px;
+		}
+
+		.input-group{
+			padding-left:30px;
+			font-size:10px;
+			padding-top:15px;
+			font-style:bold;
+		}
+
+		.user-input{
+			width:280px;
+			border:1px solid #539296;
+			/*border-color:#539296;*/
+			border-radius: 5px;
+			outline-color: #539296;
+			font-size:10px;
+			padding:5px;			
+
+		}
+
+
+		.radio{
+			font-size:10px;
+			padding-left:28px;
+			padding-top:15px;
+			display:flex;
+			align-items: center;
+		}
+		.agree{
+			text-decoration: none;
+			color: #539296;
+		}
+
+		.register-btn{
+			width:290px;
+			margin-left:30px;
+			margin-top:20px;
+			border-radius: 5px;
+			border:1px solid #539296;
+			padding:3px;
+			background:rgb(66,65,65);
+			color:white;
+			font-size:12px;
+		}
+
+		.forget-password{
+			margin-left:90px;
+			font-size:12px;
+			padding-top:7px;
+		}
+		.login-link{
+			text-decoration: none;
+			color:#539296;
+		}
+		.user-input-select{
+			width:290px;
+			border:1px solid #539296;
+			/*border-color:#539296;*/
+			border-radius: 5px;
+			outline-color: #539296;
+			font-size:10px;
+			padding:5px;
+		}
+
+		.result{
+			text-align:end;
+			padding:10px 10px;
+			font-size:20px;
+			background-color:rgb(66,65,65);
+			color:white;
+			margin:0px 24px;
+		}
+
+		.error{
+			color:red;
+		}
+
+	</style>
+
+</head>
+<body>
+	<div class="all">
+		<div class="title">Calculator Project</div>
+
+		<div class="result" id="result">
+				0
+			</div>
+		
+		<div class="input-group">
+			<label for="">Number One:</label><br>
+			<input type="number" id="firstNumber" class="user-input" placeholder="Enter First Number......">
+			<small class="error" id="numOneError">Number one is required!</small>
+			
+		</div>
+
+		<div class="input-group">
+			<label for="">Number Two:</label><br>
+			<input type="number" id="secNumber" class="user-input" placeholder="Enter Second Number.....">
+			<small class="error" id="numTwoError">Number two is required!</small>
+		</div>
+
+		<div class="input-group">
+			<label for="">Operators:</label><br>
+			
+			<select name="" id="operation"  class="user-input-select">
+				<option value="empty">Choose Options.. </option>
+				<option value="add">+ </option>
+				<option value="subtract">- </option>
+				<option value="multiply">x </option>
+				<option value="devide">/ </option>
+			</select>
+
+			<small class="error" id="operatorError">Operator is required!</small>
+			
+		</div>
+
+		<!-- <div class="input-group">
+			<label for="">Password Again:</label><br>
+			<input type="password" class="user-input">
+			
+		</div>
+
+		<div class="radio">
+			<input type="checkbox">I Agree with&nbsp;<a href="#" class="agree">term of services</a>
+			
+		</div> -->
+
+		<div class="button-group">
+			<button type="button" id="btnCalculate" class="register-btn">Calculate</button>
+
+
+			
+		</div>
+
+		<!-- div class="forget-password">
+			<p>Alreadly a member? <a href="#" class="login-link">Login Here</a></p>
+			
+		</div>
+ -->
+
+
+
+		
+	</div>
+
+
+</body>
+
+
+<script src="cal.js"></script>
+</html>
